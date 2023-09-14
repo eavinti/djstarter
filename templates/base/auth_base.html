@@ -1,13 +1,13 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-white">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <title>{% block title %}DJSTARTER{% endblock title %}</title>
+    <title>{% block head_title %}DJSTARTER{% endblock head_title %}</title>
     <meta name="description" content="A Django starter project.">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
@@ -18,17 +18,26 @@
     {% endblock %}
 </head>
 
-<body>
+<body class="h-full">
 
-{% block content %}
-{% endblock content %}
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <a href="/">
+            <img class="mx-auto h-10 w-auto" src="/static/images/logo.png" alt="DJSTARTER">
+        </a>
+        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            {% block title %}{% endblock title %}
+        </h2>
+    </div>
 
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        {% block content %}
+        {% endblock content %}
+    </div>
+</div>
 
-
-
-
-{% block javascript %}
-{% endblock javascript %}
+{% block extra_footer %}
+{% endblock extra_footer %}
 
 </body>
 

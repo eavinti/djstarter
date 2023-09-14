@@ -1,17 +1,23 @@
-{% extends 'base/_base.html' %}
+{% extends 'base/auth_base.html' %}
 
-{% block title %}Log out{% endblock %}
-
+{% block head_title %}DJSTARTER{% endblock head_title %}
+{% block title %}Logout from DJSTARTER{% endblock title %}
 
 {% block content %}
-<h1>Sign Out</h1>
 
-<p>Are you sure you want to sign out?</p>
+    <form class="space-y-6" action="{{ request.path }}" method="post">
+        {% csrf_token %}
+        <p class="text-center">Are you sure you want to sign out?</p>
+        <div>
+            <button type="submit"
+                    class="flex w-full justify-center rounded-md border border-black bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+                Sign Out
+            </button>
+        </div>
+    </form>
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {{ form }}
-  <button class="btn btn-danger" type="submit">Sign Out</button>
-</form>
-
+    <p class="mt-10 text-center text-sm text-gray-500">
+        Go back to home page
+        <a href="/" class="font-semibold leading-6 text-black">Home</a>
+    </p>
 {% endblock content %}

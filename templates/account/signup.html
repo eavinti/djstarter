@@ -1,12 +1,94 @@
-{% extends 'base/_base.html' %}
+{% extends 'base/auth_base.html' %}
 
-{% block title %}Sign up{% endblock %}
+{% block head_title %}DJSTARTER{% endblock head_title %}
+{% block title %}Sign up to DJSTARTER{% endblock title %}
 
 {% block content %}
-<h2>Sign up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <button class="btn btn-success" type="submit">Sign up</button>
-</form>
+
+    <form class="space-y-6" action="{{ request.path }}" method="post">
+        {% csrf_token %}
+
+        <div class="mb-4">
+            <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                First name
+            </label>
+            <input type="text"
+                   name="{{ form.first_name.name }}"
+                   id="{{ form.first_name.id_for_label }}"
+                   class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
+                   value="{{ form.first_name.value|default:'' }}">
+            {% if form.first_name.errors %}
+                <div class="text-red-500 text-sm mt-1">{{ form.first_name.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+            <div class="mb-4">
+            <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                Last name
+            </label>
+            <input type="text"
+                   name="{{ form.last_name.name }}"
+                   id="{{ form.last_name.id_for_label }}"
+                   class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
+                   value="{{ form.last_name.value|default:'' }}">
+            {% if form.last_name.errors %}
+                <div class="text-red-500 text-sm mt-1">{{ form.last_name.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                Email
+            </label>
+            <input type="text"
+                   name="{{ form.email.name }}"
+                   id="{{ form.email.id_for_label }}"
+                   class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
+                   value="{{ form.email.value|default:'' }}">
+            {% if form.email.errors %}
+                <div class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            <label for="{{ form.password1.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                Password
+            </label>
+            <input type="password"
+                   name="{{ form.password1.name }}"
+                   id="{{ form.password1.id_for_label }}"
+                   class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
+                   value="{{ form.password1.value|default:'' }}">
+            {% if form.password1.errors %}
+                <div class="text-red-500 text-sm mt-1">{{ form.password1.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            <label for="{{ form.password2.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                Conform password
+            </label>
+            <input type="password"
+                   name="{{ form.password2.name }}"
+                   id="{{ form.password2.id_for_label }}"
+                   class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
+                   value="{{ form.password2.value|default:'' }}">
+            {% if form.password2.errors %}
+                <div class="text-red-500 text-sm mt-1">{{ form.password2.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+
+        <div>
+            <button type="submit"
+                    class="flex w-full justify-center rounded-md border border-black bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+                Sign in
+            </button>
+        </div>
+    </form>
+
+    <p class="mt-10 text-center text-sm text-gray-500">
+        Not a member?
+        <a href="/accounts/signup/" class="font-semibold leading-6 text-black">create an account</a>
+    </p>
 {% endblock content %}

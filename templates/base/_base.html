@@ -56,8 +56,29 @@
                 <a href="{% url 'about' %}" class="text-sm font-semibold leading-6 text-gray-900">Company</a>
             </div>
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <a href="{% url 'account_login' %}" class="text-sm font-semibold leading-6 text-gray-900">Log in <span
-                        aria-hidden="true">&rarr;</span></a>
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'account_login' %}" class="text-sm font-semibold leading-6 text-gray-900">
+                        Log in <span aria-hidden="true">&rarr;</span>
+                    </a>
+                {% else %}
+                    <a href="#" class="group block flex-shrink-0">
+                        <div class="flex items-center">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5" stroke="currentColor"
+                                     class="w-6 h-6 text-gray-300">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">{{ user.email }}</p>
+                                <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">Go to
+                                    dashboard</p>
+                            </div>
+                        </div>
+                    </a>
+                {% endif %}
             </div>
         </nav>
         <!-- Mobile menu, show/hide based on menu open state. -->
