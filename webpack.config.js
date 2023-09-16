@@ -2,25 +2,25 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-    mode: 'development', // Establece el modo de desarrollo por defecto
+    mode: 'development',
     entry: [
-        'webpack-dev-server/client?http://localhost:8080',  // Activar el hot reloading
-        './frontend/src/index.js' // El punto de entrada de tu aplicación
+        //'webpack-dev-server/client?http://localhost:8080', TODO
+        './frontend/src/index.js'
     ],
     output: {
-        path: path.resolve(__dirname, './static/js/'), // Donde se guardarán los archivos bundle
+        path: path.resolve(__dirname, './static/js/'),
         filename: 'bundle.js',
         publicPath: 'http://localhost:8080/',
     },
     module: {
         rules: [
             {
-                test: /\.js$/, // Para todos los archivos .js
-                exclude: /node_modules/, // Excepto la carpeta node_modules
+                test: /\.js$/,
+                exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader', // Usa babel-loader
+                    loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react'] // Para transpilar ES6+ y React
+                        presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
             }
@@ -28,10 +28,10 @@ module.exports = {
     },
     devServer: {
         static: {
-            directory: path.join(__dirname, 'static'), // Suponiendo que "static" es tu carpeta pública
+            directory: path.join(__dirname, 'static'),
         },
-        hot: true,
-        port: 8080, // Definir explícitamente el puerto, solo por claridad
+        hot: false, // TODO
+        port: 8080,
         proxy: {
             '/static/js/': {
                 target: 'http://localhost:8000',
@@ -43,6 +43,6 @@ module.exports = {
         },
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        //new webpack.HotModuleReplacementPlugin() TODO
     ]
 };
