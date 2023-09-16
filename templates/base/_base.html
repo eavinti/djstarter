@@ -179,7 +179,13 @@
 </div>
 
 
-<script src="{% static '/js/bundle.js' %}"></script>
+
+{% if debug %}
+    <script src="http://localhost:8080/bundle.js"></script>
+{% else %}
+    <script src="{% static '/js/bundle.js' %}"></script>
+{% endif %}
+
 {% block javascript %}
 {% endblock javascript %}
 

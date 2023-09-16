@@ -1,10 +1,16 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-    entry: './frontend/src/index.js', // El punto de entrada de tu aplicación
+    mode: 'development', // Establece el modo de desarrollo por defecto
+    entry: [
+        'webpack-dev-server/client?http://localhost:8080',  // Activar el hot reloading
+        './frontend/src/index.js' // El punto de entrada de tu aplicación
+    ],
     output: {
         path: path.resolve(__dirname, './static/js/'), // Donde se guardarán los archivos bundle
         filename: 'bundle.js',
+        publicPath: 'http://localhost:8080/',
     },
     module: {
         rules: [
@@ -19,5 +25,24 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'static'), // Suponiendo que "static" es tu carpeta pública
+        },
+        hot: true,
+        port: 8080, // Definir explícitamente el puerto, solo por claridad
+        proxy: {
+            '/static/js/': {
+                target: 'http://localhost:8000',
+                secure: false
+            }
+        },
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
 };
