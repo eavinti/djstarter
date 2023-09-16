@@ -34,6 +34,17 @@ $ source .venv/bin/activate
 # Load the site at http://127.0.0.1:8000
 ```
 
+### Frontend DEV
+```
+ $ npm install
+ $ npm start 
+```
+
+### Frontend Prod
+```
+ $ npm run build
+```
+
 
 ## Next Steps
 
