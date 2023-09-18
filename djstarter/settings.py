@@ -33,6 +33,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=Csv())
 CUSTOM_APPS = [
     'apps.accounts',
     'apps.pages',
+    'apps.dashboard',
 ]
 
 THIRD_PARTY_APPS = [

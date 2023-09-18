@@ -10,12 +10,10 @@
     <title>{% block title %}DJSTARTER{% endblock title %}</title>
     <meta name="description" content="A Django starter project.">
     <meta name="author" content="">
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static '/images/favicon.png' %}">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    {% block css %}
-
-    {% endblock %}
+    {% block extra_head %}
+    {% endblock extra_head %}
 </head>
 
 <body>
@@ -186,8 +184,8 @@
     <script src="{% static '/js/bundle.js' %}"></script>
 {% endif %}
 
-{% block javascript %}
-{% endblock javascript %}
+{% block extra_footer %}
+{% endblock extra_footer %}
 
 </body>
 

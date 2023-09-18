@@ -1,9 +1,24 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+
+import Initializer from './components/Initializer';
 import FirstComponent from './components/FirstComponent';
 
-// ReactDOM.render(<FirstComponent />, document.getElementById('first-component'));
+import './index.css';
 
-const firstComponent = document.getElementById('first-component');
-const reactRoot = createRoot(firstComponent);
-reactRoot.render(<FirstComponent tab="home" />);
+
+function renderComponent(domId, Component, props = {}) {
+    const domElement = document.getElementById(domId);
+    if (domElement) {
+        const root = createRoot(domElement);
+        root.render(<Component {...props} />);
+    }
+}
+
+
+renderComponent('initializer', Initializer);
+renderComponent('first-component', FirstComponent);
+
+// const firstComponent = document.getElementById('first-component');
+// const reactRoot = createRoot(firstComponent);
+// reactRoot.render(<FirstComponent tab="home" />);

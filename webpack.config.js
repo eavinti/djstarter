@@ -23,7 +23,25 @@ module.exports = {
                         presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
-            }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader', // Inyecta CSS en el DOM
+                    'css-loader',   // Convierte CSS en CommonJS
+                    {
+                        loader: 'postcss-loader', // Procesa CSS con PostCSS
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    require('tailwindcss'),
+                                    require('autoprefixer'),
+                                ],
+                            },
+                        },
+                    },
+                ],
+            },
         ]
     },
     devServer: {
@@ -44,5 +62,5 @@ module.exports = {
     },
     plugins: [
         //new webpack.HotModuleReplacementPlugin() TODO
-    ]
+    ],
 };
