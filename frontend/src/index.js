@@ -18,7 +18,3 @@ function renderComponent(domId, Component, props = {}) {
 
 renderComponent('initializer', Initializer);
 renderComponent('first-component', FirstComponent);
-
-// const firstComponent = document.getElementById('first-component');
-// const reactRoot = createRoot(firstComponent);
-// reactRoot.render(<FirstComponent tab="home" />);

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sports Betting</title>
+    <title>DJSTARTER - Dashboard</title>
     <link rel="icon" href="/static/images/favicon.png">
 
     {% block extra_head %}
@@ -28,7 +28,7 @@
             From: "opacity-100"
             To: "opacity-0"
         -->
-        <div class="fixed inset-0 bg-gray-900/90"></div>
+        <div class="fixed inset-0 bg-black/50"></div>
 
         <div class="fixed inset-0 flex">
             <!--
@@ -55,7 +55,7 @@
                 <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
                     <button id="account-mobile-menu-close" type="button" class="-m-2.5 p-2.5">
                         <span class="sr-only">Close sidebar</span>
-                        <svg class="h-6 w-6 text-bet-yellow" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        <svg class="h-6 w-6 text-djs-green-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
@@ -64,10 +64,10 @@
 
                 <!-- Sidebar component, swap this element with another sidebar if you like -->
                 <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-black px-6 pb-2">
-                    <div class="flex h-16 shrink-0 items-center">
+                    <a href="{% url 'home_dashboard' %}" class="flex h-16 shrink-0 items-center">
                         <img class="h-8 w-auto" src="/static/images/icon.png"
                              alt="Your Company">
-                    </div>
+                    </a>
                     <nav class="flex flex-1 flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-7">
                             {% include "base/dashboard/menu.html" with show_profile=False %}
@@ -82,10 +82,10 @@
     <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-950 bg-black px-6">
-            <div class="flex h-16 shrink-0 items-center">
+            <a href="{% url 'home_dashboard' %}" class="flex h-16 shrink-0 items-center">
                 <img class="h-8 w-auto" src="/static/images/icon.png"
                      alt="DJSTARTER">
-            </div>
+            </a>
             <nav class="flex flex-1 flex-col">
                 <ul role="list" class="flex flex-1 flex-col gap-y-7">
                     {% include "base/dashboard/menu.html" with show_profile=True %}

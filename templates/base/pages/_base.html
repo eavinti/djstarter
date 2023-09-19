@@ -29,16 +29,11 @@
 <div class="bg-white">
     <!-- Header -->
     <header class="absolute inset-x-0 top-0 z-50">
-        <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-            <div class="flex lg:flex-1">
-                <a href="{% url 'home' %}" class="-m-1.5 p-1.5">
-                    <span class="sr-only">DJSTARTER</span>
-                    <img class="h-8 w-auto" src="/static/images/icon.png" alt="">
-                </a>
-            </div>
+        <nav class="mx-auto flex max-w-7xl items-center p-6 lg:px-8" aria-label="Global">
             <div class="flex lg:hidden">
-                <button type="button"
-                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                <button id="account-mobile-menu-open"
+                        type="button"
+                        class="-m-2.5 inline-flex items-center justify-center rounded-md pl-2.5 pr-6 py-2.5 text-gray-700">
                     <span class="sr-only">Open main menu</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                          aria-hidden="true">
@@ -46,6 +41,12 @@
                               d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
                     </svg>
                 </button>
+            </div>
+            <div class="flex lg:flex-1">
+                <a href="{% url 'home' %}" class="-m-1.5 p-1.5">
+                    <span class="sr-only">DJSTARTER</span>
+                    <img class="h-8 w-auto" src="/static/images/icon.png" alt="">
+                </a>
             </div>
             <div class="hidden lg:flex lg:gap-x-12">
                 <a href="{% url 'features' %}" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
@@ -68,28 +69,32 @@
                                           d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                 </svg>
                             </div>
-                            <div class="ml-3">
+                            <a href="{% url 'home_dashboard' %}" class="ml-3">
                                 <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">{{ user.email }}</p>
-                                <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">Go to
-                                    dashboard</p>
-                            </div>
+                                <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                                    Go to dashboard
+                                </p>
+                            </a>
                         </div>
                     </a>
                 {% endif %}
             </div>
         </nav>
         <!-- Mobile menu, show/hide based on menu open state. -->
-        <div class="lg:hidden" role="dialog" aria-modal="true">
+        <div id="account-mobile-menu-content" class="lg:hidden" role="dialog" aria-modal="true">
+            <div class="fixed inset-0 bg-black/50"></div>
             <!-- Background backdrop, show/hide based on slide-over state. -->
             <div class="fixed inset-0 z-50"></div>
-            <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <div class="fixed inset-y-0 left-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                 <div class="flex items-center justify-between">
                     <a href="{% url 'home' %}" class="-m-1.5 p-1.5">
                         <span class="sr-only">DJSTARTER</span>
                         <img class="h-8 w-auto" src="/static/images/icon.png"
                              alt="">
                     </a>
-                    <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                    <button id="account-mobile-menu-close"
+                            type="button"
+                            class="-m-2.5 rounded-md p-2.5 text-gray-700">
                         <span class="sr-only">Close menu</span>
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                              aria-hidden="true">
@@ -98,8 +103,8 @@
                     </button>
                 </div>
                 <div class="mt-6 flow-root">
-                    <div class="-my-6 divide-y divide-gray-500/10">
-                        <div class="space-y-2 py-6">
+                    <div class="-my-6">
+                        <div class="space-y-2 pt-6 mb-12">
                             <a href="{% url 'features' %}"
                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
                             <a href="{% url 'about' %}"
@@ -107,12 +112,37 @@
                             <a href="{% url 'contact' %}"
                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact</a>
                         </div>
-                        <div class="py-6">
-                            <a href="{% url 'account_login' %}"
-                               class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                Log in
+                        {% if not user.is_authenticated %}
+                            <div class="flex justify-between border-t border-t-gray-500/10">
+                                <a href="{% url 'account_login' %}"
+                                   class="inline px-3 py-2.5 text-base border border-black rounded-md bg-black text-white hover:bg-white hover:text-black">
+                                    Log in
+                                </a>
+                                <a href="{% url 'account_signup' %}"
+                                   class="inline px-3 py-2.5 text-base border border-black rounded-md bg-black text-white hover:bg-white hover:text-black">
+                                    sign up
+                                </a>
+                            </div>
+                        {% else %}
+                            <a href="#" class="group block flex-shrink-0 border-t border-t-gray-500/10">
+                                <div class="flex justify-center items-center">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke-width="1.5" stroke="currentColor"
+                                             class="w-6 h-6 text-gray-300">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <a href="{% url 'home_dashboard' %}" class="ml-3">
+                                        <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">{{ user.email }}</p>
+                                        <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                                            Go to dashboard
+                                        </p>
+                                    </a>
+                                </div>
                             </a>
-                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

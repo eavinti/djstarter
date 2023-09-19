@@ -5,6 +5,7 @@ module.exports = {
     mode: 'development',
     entry: [
         //'webpack-dev-server/client?http://localhost:8080', TODO
+        './static/js/main.js',
         './frontend/src/index.js'
     ],
     output: {
