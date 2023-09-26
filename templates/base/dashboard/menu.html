@@ -47,13 +47,22 @@
 </li>
 {% if show_profile %}
     <li class="-mx-6 mt-auto bg-gray-950">
-        <a href="#"
-           class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white">
-            <img class="h-8 w-8 rounded-full bg-transparent"
+        <div
+                class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white">
+            <img class="h-6 w-6 rounded-full bg-transparent border border-white"
                  src="/static/images/resources/user_profile.png"
                  alt="">
             <span class="sr-only">Your profile</span>
             <span aria-hidden="true">{{ request.user.email }}</span>
-        </a>
+            <a href="{% url 'account_logout' %}">
+                <svg fill="none" viewBox="0 0 24 24"
+                     stroke-width="1.5"
+                     stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9">
+                    </path>
+                </svg>
+            </a>
+        </div>
     </li>
 {% endif %}
