@@ -27,7 +27,7 @@ module.exports = {
             sky: colors.sky,
             yellow: colors.yellow,
             djs: {
-                'green-primary': '#E7FE55',
+                'primary': '#E7FE55',
                 'secondary': '#e83902'
             }
         },

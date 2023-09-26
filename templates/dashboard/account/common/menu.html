@@ -7,7 +7,7 @@
             <select id="current-tab"
                     name="current-tab"
                     onchange="window.location.replace(this.value);"
-                    class="block w-full rounded-md border-black py-2 pl-3 pr-10 text-base focus:border-djs-green-primary focus:outline-none focus:ring-djs-green-primary sm:text-sm">
+                    class="block w-full rounded-md border-black py-2 pl-3 pr-10 text-base focus:border-djs-primary focus:outline-none focus:ring-djs-primary sm:text-sm">
                 <option value="{% url 'account_view' %}" {% if page_settings.code == 'account_dashboard' and  page_settings.sub_code == 'account' %}selected{% endif %}>Account</option>
                 <option value="{% url 'password_view' %}" {% if page_settings.code == 'account_dashboard' and  page_settings.sub_code == 'password' %}selected{% endif %}>Password</option>
             </select>
