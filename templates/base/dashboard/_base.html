@@ -14,44 +14,14 @@
 </head>
 <body class="h-full">
 
+<div id="backdrop" class="fixed inset-0 bg-white z-50 opacity-100 transition-opacity duration-500"></div>
 
 <div>
-    <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
-    <div id="account-mobile-menu-content" class="hidden relative z-50 lg:hidden" role="dialog" aria-modal="true">
-        <!--
-          Off-canvas menu backdrop, show/hide based on off-canvas menu state.
-
-          Entering: "transition-opacity ease-linear duration-300"
-            From: "opacity-0"
-            To: "opacity-100"
-          Leaving: "transition-opacity ease-linear duration-300"
-            From: "opacity-100"
-            To: "opacity-0"
-        -->
+    <div id="account-mobile-menu-content" class="hidden relative z-40 lg:hidden" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-black/50"></div>
 
         <div class="fixed inset-0 flex">
-            <!--
-              Off-canvas menu, show/hide based on off-canvas menu state.
-
-              Entering: "transition ease-in-out duration-300 transform"
-                From: "-translate-x-full"
-                To: "translate-x-0"
-              Leaving: "transition ease-in-out duration-300 transform"
-                From: "translate-x-0"
-                To: "-translate-x-full"
-            -->
             <div class="relative mr-16 flex w-full max-w-xs flex-1">
-                <!--
-                  Close button, show/hide based on off-canvas menu state.
-
-                  Entering: "ease-in-out duration-300"
-                    From: "opacity-0"
-                    To: "opacity-100"
-                  Leaving: "ease-in-out duration-300"
-                    From: "opacity-100"
-                    To: "opacity-0"
-                -->
                 <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
                     <button id="account-mobile-menu-close" type="button" class="-m-2.5 p-2.5">
                         <span class="sr-only">Close sidebar</span>
@@ -79,7 +49,7 @@
     </div>
 
     <!-- Static sidebar for desktop -->
-    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+    <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:w-72 lg:flex-col">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-950 bg-black px-6">
             <a href="{% url 'home_dashboard' %}" class="flex h-16 shrink-0 items-center">

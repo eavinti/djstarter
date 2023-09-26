@@ -1,4 +1,15 @@
 /*
+* Backdrop transition timeout waiting for the initial load.
+* */
+window.addEventListener("load", function() {
+    const backdrop = document.getElementById("backdrop");
+    backdrop.style.opacity = "0";
+    setTimeout(() => {
+        backdrop.remove();
+    }, 500);
+});
+
+/*
 * Controls the opening and closing of the mobile side menu on pages and dashboard
 * */
 const accountMobileMenuOpen = document.getElementById('account-mobile-menu-open');

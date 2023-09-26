@@ -28,7 +28,7 @@ module.exports = {
             yellow: colors.yellow,
             djs: {
                 'green-primary': '#E7FE55',
-                'red-primary': '#e83902'
+                'secondary': '#e83902'
             }
         },
         extend: {},
