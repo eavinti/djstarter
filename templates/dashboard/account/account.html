@@ -4,7 +4,7 @@
 
     {% include 'dashboard/account/common/menu.html' %}
 
-    <div class="space-y-10 p-6 divide-y divide-slate-900/10">
+    <div class="space-y-10 p-6 divide-y divide-black/10">
 
 
         <div class="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
@@ -16,7 +16,7 @@
             <form action="{{ request.path }}"
                   method="post"
                   enctype="multipart/form-data"
-                  class="bg-black shadow-sm ring-1 ring-slate-900/5 sm:rounded-xl md:col-span-2">
+                  class="bg-white shadow-sm ring-1 ring-black/5 sm:rounded-xl md:col-span-2">
                 {% csrf_token %}
                 {{ account_form.user_id }}
                 <div class="px-4 py-6 sm:p-8">
@@ -49,7 +49,7 @@
                         {% endif %}
 
                         <div class="col-span-6 sm:col-span-3">
-                            <label class="block text-sm font-medium leading-6 text-slate-100">
+                            <label class="block text-sm font-medium leading-6 text-black">
                                 First name
                             </label>
                             <div class="mt-2">
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
-                            <label class="block text-sm font-medium leading-6 text-slate-100">
+                            <label class="block text-sm font-medium leading-6 text-black">
                                 Last name
                             </label>
                             <div class="mt-2">
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
-                            <label class="block text-sm font-medium leading-6 text-slate-100">
+                            <label class="block text-sm font-medium leading-6 text-black">
                                 Email
                             </label>
                             <div class="mt-2">
@@ -85,13 +85,13 @@
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
-                            <label class="block text-sm font-medium leading-6 text-slate-100">
+                            <label class="block text-sm font-medium leading-6 text-black">
                                 Username
                             </label>
                             <div class="relative mt-2 rounded-md shadow-sm">
                                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                     <svg fill="none" viewBox="0 0 24 24"
-                                         stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-slate-200">
+                                         stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-black">
                                         <path stroke-linecap="round"
                                               d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25"></path>
                                     </svg>
@@ -106,7 +106,7 @@
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
-                            <label class="block text-sm font-medium leading-6 text-slate-100">
+                            <label class="block text-sm font-medium leading-6 text-black">
                                 Date of birth
                             </label>
                             <div class="mt-2">
@@ -122,10 +122,10 @@
 
                     </div>
                 </div>
-                <div class="flex items-center justify-end gap-x-6 border-t border-slate-800 px-4 py-4 sm:px-8">
-                    <button type="button" class="text-sm font-semibold leading-6 text-slate-300">Cancel</button>
+                <div class="flex items-center justify-end gap-x-6 border-t border-black px-4 py-4 sm:px-8">
+                    <button type="button" class="text-sm font-semibold leading-6 text-black">Cancel</button>
                     <button type="submit"
-                            class="rounded-md bg-bet-green px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-bet-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bet-green">
+                            class="rounded-md bg-black px-3 py-2 text-sm font-semibold border border-black text-white shadow-sm hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
                         Save
                     </button>
                 </div>
