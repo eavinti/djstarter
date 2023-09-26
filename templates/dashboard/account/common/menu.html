@@ -1,0 +1,29 @@
+<div class="pt-6 mb-4 border-b border-gray-200 pb-5 sm:pb-0">
+    <h3 class="text-base font-semibold leading-6 text-black">My account</h3>
+    <div class="mt-3 sm:mt-4">
+        <!-- Dropdown menu on small screens -->
+        <div class="sm:hidden">
+            <label for="current-tab" class="sr-only">Select a tab</label>
+            <select id="current-tab"
+                    name="current-tab"
+                    onchange="window.location.replace(this.value);"
+                    class="block w-full rounded-md border-black py-2 pl-3 pr-10 text-base focus:border-djs-green-primary focus:outline-none focus:ring-djs-green-primary sm:text-sm">
+                <option value="{% url 'account_view' %}" {% if page_settings.code == 'account_dashboard' and  page_settings.sub_code == 'account' %}selected{% endif %}>Account</option>
+                <option value="{% url 'password_view' %}" {% if page_settings.code == 'account_dashboard' and  page_settings.sub_code == 'password' %}selected{% endif %}>Password</option>
+            </select>
+        </div>
+        <!-- Tabs at small breakpoint and up -->
+        <div class="hidden sm:block">
+            <nav class="-mb-px flex space-x-8">
+                <a href="{% url 'account_view' %}"
+                   class="whitespace-nowrap border-b-2 px-1 pb-4 text-sm font-medium {% if page_settings.code == 'account_dashboard' and  page_settings.sub_code == 'account' %} border-black text-black {% else %}border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-500{% endif %}">
+                    Account
+                </a>
+                <a href="{% url 'password_view' %}"
+                   class="whitespace-nowrap border-b-2 px-1 pb-4 text-sm font-medium {% if page_settings.code == 'account_dashboard' and  page_settings.sub_code == 'password' %} border-black text-black {% else %}border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-500{% endif %}">
+                    Password
+                </a>
+            </nav>
+        </div>
+    </div>
+</div>

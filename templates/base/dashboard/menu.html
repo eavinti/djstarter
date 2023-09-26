@@ -24,7 +24,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round"
                           d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
-                Ajustes
+                Settings
             </a>
         </li>
 
@@ -35,7 +35,7 @@
     <!--div class="text-xs font-semibold leading-6 text-slate-200">{{ request.user.first_name }}</div-->
     <ul role="list" class="-mx-2 mt-2 space-y-1">
         <li>
-            <a href="/dashboard/me/"
+            <a href="{% url 'account_view' %}"
                class="text-djs-green-primary group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold hover:bg-white hover:text-black {% if page_settings.code == 'account' %}bg-white text-black{% endif %}">
                 <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-black text-djs-green-primary group-hover:border-white">
                     @
