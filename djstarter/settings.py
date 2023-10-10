@@ -39,7 +39,8 @@ CUSTOM_APPS = [
 THIRD_PARTY_APPS = [
     'allauth',
     'allauth.account',
-    "debug_toolbar",
+    'debug_toolbar',
+    'rest_framework',
 ]
 
 DJANGO_APPS = [
