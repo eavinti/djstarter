@@ -37,6 +37,7 @@ $ source .venv/bin/activate
 ### Frontend DEV
 #### 🚨 The frontend **must be running** on dev to see the React and Tailwind changes 🚨
 ```
+ $ cd react
  $ npm install
  $ npm start 
  # Load the react compoents at http://localhost:8080/bundle.js
@@ -44,6 +45,7 @@ $ source .venv/bin/activate
 
 ### Frontend Prod
 ```
+ $ cd react
  $ npm run build
  # the generated bundle is in /static/js/bundle.js
 ```
