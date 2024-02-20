@@ -8,7 +8,7 @@ Starter code for your Django projects
 
 ## Features
 
-- Django 4.2.5
+- Django 5.0.2
 - Install via [Pip](https://pypi.org/project/pip/)
 - User log in/out, sign up, password reset via [django-allauth](https://github.com/pennersr/django-allauth)
 - Static files configured with [Whitenoise](http://whitenoise.evans.io/en/stable/index.html)
