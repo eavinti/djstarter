@@ -5,11 +5,11 @@ module.exports = {
     mode: 'development',
     entry: [
         //'webpack-dev-server/client?http://localhost:8080', TODO
-        './static/js/main.js',
-        './frontend/src/index.js'
+        '../static/js/main.js',
+        './src/index.js'
     ],
     output: {
-        path: path.resolve(__dirname, './static/js/'),
+        path: path.resolve(__dirname, '../static/js/'),
         filename: 'bundle.js',
         publicPath: 'http://localhost:8080/',
     },
@@ -52,7 +52,7 @@ module.exports = {
         hot: false, // TODO
         port: 8080,
         proxy: {
-            '/static/js/': {
+            '../static/js/': {
                 target: 'http://localhost:8000',
                 secure: false
             }
