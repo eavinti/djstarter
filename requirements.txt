@@ -1,12 +1,12 @@
-Django==4.2.5
-django-allauth==0.56.1
-django-debug-toolbar==4.2.0
+Django==5.0.2
+django-allauth==0.61.1
+django-debug-toolbar==4.3.0
 
 gunicorn==21.2.0
 psycopg2==2.9.7
 # psycopg-binary==2.9.7
 
-whitenoise==6.5.0
+whitenoise==6.6.0
 python-decouple==3.8
 
 requests==2.31.0
